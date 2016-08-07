@@ -5,13 +5,16 @@ var mi = function (element, nature) {
         return;
     }
 
+    // 将原先节点禁止写入
     ele.setAttribute('readonly', 'readonly');
 
     ele.addEventListener('click', function () {
-
+        console.log('aaa');
     });
 
-    // 点击
+    var newEle = document.createElement("div");
+    newEle.id = 'J_MIBG';
+    document.body.appendChild(newEle);
 
     // 潜复制
     function exend (target, options) {
