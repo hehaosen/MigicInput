@@ -1,5 +1,8 @@
 var mi = function (element, nature) {
-    var ele = document.querySelector(element);
+    var ele = document.querySelector(element),
+        availWidth = window.screen.availWidth,
+        availHeight = window.screen.availHeight;
+
     if (ele.localName !== 'input') {
         console.warn('节点' + element + ',不是一个输入框');
         return;
@@ -13,16 +16,30 @@ var mi = function (element, nature) {
 
     ele.addEventListener('click', function () {
 
+        setInterval(waitListener(function () {
+            var newEle = document.createElement("div");
+            newEle.id = 'J_MIBG';
+            document.body.appendChild(newEle);
+            styles(document.querySelector('#J_MIBG'), {
+                'height' : '100px'
+            })
+        }), 10);
+
     });
+
+    // 确保键盘弹出
+    function waitListener(callback) {
+
+        if (availHeight >= window.screen.availHeight) {
+            callback();
+        } else {
+            return false
+        }
+    }
 
     // 初始化
     function init () {
-        var newEle = document.createElement("div");
-        newEle.id = 'J_MIBG';
-        document.body.appendChild(newEle);
-        styles(document.querySelector('#J_MIBG'), {
-            'height' : '100px'
-        })
+
     }
 
     // 样式方法
