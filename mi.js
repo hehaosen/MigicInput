@@ -28,7 +28,10 @@ var mi = function (element, nature) {
                 newEle.id = 'J_MIBG';
                 document.body.appendChild(newEle);
                 styles(document.querySelector('#J_MIBG'), {
-                    'height': '100px'
+                    'height': availHeight + 'px',
+                    'width' : '100%',
+                    'background': '#000000',
+                    'postion' : 'relative'
                 })
             })
         }, 10);
@@ -59,5 +62,17 @@ var mi = function (element, nature) {
             target[name] = options[name];
         }
         return target;
+    }
+
+    // 隐藏节点
+    Object.prototype.hide = function () {
+        if (this.style.cssText.indexOf('display:none;') === -1) {
+            this.style.cssText = this.style.cssText + 'display:none;';
+        }
+    };
+
+    // 显示节点
+    Object.prototype.show = function () {
+        this.style.cssText.split('display:none').join('');
     }
 };
