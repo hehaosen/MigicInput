@@ -32,11 +32,24 @@ var mi = function (element, nature) {
                     'width' : '100%',
                     'background': '#000000',
                     'postion' : 'relative'
-                })
+                });
+
+                ele.hide();
+
             })
         }, 10);
 
     });
+
+    // 创建节点
+    function createEle (nature) {
+        var nature = exend( {
+            id : '',
+            class : '',
+            styles : {},
+            type : 'div'
+        },nature);
+    }
 
     // 样式方法
     function styles (element, css) {
