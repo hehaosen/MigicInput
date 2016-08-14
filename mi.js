@@ -78,14 +78,14 @@ var mi = function (element, nature) {
     }
 
     // 隐藏节点
-    Object.prototype.hide = function () {
-        if (this.style.cssText.indexOf('display:none;') === -1) {
-            this.style.cssText = this.style.cssText + 'display:none;';
+    function hide (element) {
+        if (element.style.cssText.indexOf('display:none;') === -1) {
+            element.style.cssText = element.style.cssText + 'display:none;';
         }
     };
 
     // 显示节点
-    Object.prototype.show = function () {
-        this.style.cssText.split('display:none').join('');
+    function show (element) {
+        element.style.cssText.split('display:none').join('');
     }
 };
