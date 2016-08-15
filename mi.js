@@ -42,13 +42,14 @@ var mi = function (element, nature) {
     });
 
     // 创建节点
-    function createEle (nature, callback) {
+    function createEle (nature) {
         var init = {
             id: '',
             class: '',
             styles: {},
             type: 'div',
-            parent: ''
+            parent: '',
+            callback: function (){}
         };
         init = exend(init, nature);
         console.log(init);
@@ -65,7 +66,7 @@ var mi = function (element, nature) {
         else
             styles(document.querySelector('#' + init.id), init.styles);
 
-        callback();
+        init.callback();
     }
 
     // 样式方法
