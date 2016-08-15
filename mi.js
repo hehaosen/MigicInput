@@ -24,18 +24,18 @@ var mi = function (element, nature) {
 
         var waitTimer = setInterval(function() {
             return waitListener(function () {
-                var newEle = document.createElement("div");
-                newEle.id = 'J_MIBG';
-                document.body.appendChild(newEle);
-                styles(document.querySelector('#J_MIBG'), {
-                    'height': availHeight + 'px',
-                    'width' : '100%',
-                    'background': '#000000',
-                    'postion' : 'relative'
+                createEle({
+                    id : 'J_MIBG',
+                    styles : {
+                        'height': availHeight + 'px',
+                        'width': '100%',
+                        'background': '#000000',
+                        'postion': 'relative',
+                        'top': '0',
+                        'left': '0'
+                    }
+
                 });
-
-                ele.hide();
-
             })
         }, 10);
 
@@ -43,12 +43,25 @@ var mi = function (element, nature) {
 
     // 创建节点
     function createEle (nature) {
-        var nature = exend( {
-            id : '',
-            class : '',
-            styles : {},
-            type : 'div'
-        },nature);
+        var init = {
+            id: '',
+            class: '',
+            styles: {},
+            type: 'div'
+        };
+        init = exend(init, nature);
+        console.log(init);
+        var newEle = document.createElement(init.type);
+        newEle.id = init.id;
+        newEle.className = init.class;
+        document.body.appendChild(newEle);
+
+        if (!init.id) {
+            styles(document.querySelector('.' + init.class.split(' ')[0], init.styles));
+        } else {
+            styles(document.querySelector('#' + init.id), init.styles);
+
+        }
     }
 
     // 样式方法
@@ -63,7 +76,6 @@ var mi = function (element, nature) {
         for (var i in css) {
             cssText += i + ':' + css[i] + ';'
         }
-
         element.style.cssText = cssText;
 
         return true
