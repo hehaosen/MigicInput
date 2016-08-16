@@ -32,21 +32,23 @@ var mi = function (element, nature) {
                         'background': '#000000',
                         'position': 'fixed',
                         'top': '0',
-                        'left': '0',
-                        'callback': function () {
-                            createEle({
-                               id: 'J_migicInput',
-                               type: 'input',
-                               attr: {
-                                   'type' : 'text'
-                               },
-                               sytles: {
-                                   'width': '100%'
-                               }
-                            });
-                        }
+                        'left': '0'
+                    },
+                    'callback': function () {
+                        createEle({
+                           id: 'J_migicInput',
+                           type: 'input',
+                           attr: {
+                               'type' : 'text'
+                           },
+                           styles: {
+                               'width': '80%',
+                               'margin-left': '-' + availWidth * 0.4 + 'px',
+                               'left': '50%'
+                           },
+                           parent: '#J_MIBG'
+                        });
                     }
-
                 });
             })
         }, 10);
@@ -66,6 +68,7 @@ var mi = function (element, nature) {
             callback: function (){}
         };
         init = exend(init, nature);
+
         var newEle = document.createElement(init.type), selfEle;
 
         newEle.id = init.id;
@@ -93,7 +96,7 @@ var mi = function (element, nature) {
         console.log(selfEle);
 
         styles(selfEle, init.styles);
-
+        console.log(init.callback);
         init.callback();
     }
 
