@@ -25,14 +25,26 @@ var mi = function (element, nature) {
         var waitTimer = setInterval(function() {
             return waitListener(function () {
                 createEle({
-                    id : 'J_MIBG',
-                    styles : {
+                    id: 'J_MIBG',
+                    styles: {
                         'height': availHeight + 'px',
                         'width': '100%',
                         'background': '#000000',
                         'position': 'fixed',
                         'top': '0',
-                        'left': '0'
+                        'left': '0',
+                        'callback': function () {
+                            createEle({
+                               id: 'J_migicInput',
+                               type: 'input',
+                               attr: {
+                                   'type' : 'text'
+                               },
+                               sytles: {
+                                   'width': '100%'
+                               }
+                            });
+                        }
                     }
 
                 });
@@ -43,28 +55,44 @@ var mi = function (element, nature) {
 
     // 创建节点
     function createEle (nature) {
+        console.log('创建');
         var init = {
             id: '',
             class: '',
             styles: {},
             type: 'div',
             parent: '',
+            attr: null,
             callback: function (){}
         };
         init = exend(init, nature);
-        console.log(init);
-        var newEle = document.createElement(init.type);
+        var newEle = document.createElement(init.type), selfEle;
+
         newEle.id = init.id;
         newEle.className = init.class;
+
         if (!init.parent)
             document.body.appendChild(newEle);
         else
             document.querySelector(init.parent).appendChild(newEle);
 
+
         if (!init.id)
-            styles(document.querySelector('.' + init.class.split(' ')[0], init.styles));
+            selfEle = document.querySelector('.' + init.class.split(' ')[0]);
         else
-            styles(document.querySelector('#' + init.id), init.styles);
+            selfEle = document.querySelector('#' + init.id);
+
+
+        if (!init.attr && typeof (init.attr) == 'object') {
+
+            for ( var key in init.attr) {
+                selfEle.setAttribute(key, init.attr[key]);
+            }
+
+        }
+        console.log(selfEle);
+
+        styles(selfEle, init.styles);
 
         init.callback();
     }
@@ -99,7 +127,7 @@ var mi = function (element, nature) {
         if (element.style.cssText.indexOf('display:none;') === -1) {
             element.style.cssText = element.style.cssText + 'display:none;';
         }
-    };
+    }
 
     // 显示节点
     function show (element) {
