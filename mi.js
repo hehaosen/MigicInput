@@ -12,53 +12,57 @@ var mi = function (element, nature) {
 
 
     ele.addEventListener('click', function () {
-        // 确保键盘弹出
-        function waitListener(callback) {
-            if (availHeight > window.screen.availHeight) {
-                clearInterval(waitTimer);
-                callback();
-            } else {
-                return false
-            }
-        }
 
-        var waitTimer = setInterval(function() {
-            return waitListener(function () {
+        createEle({
+            id: 'J_MIBG',
+            styles: {
+                'height': availHeight + 'px',
+                'width': '100%',
+                'background': '#000000',
+                'position': 'fixed',
+                'top': '0',
+                'left': '0'
+            },
+            'callback': function () {
                 createEle({
-                    id: 'J_MIBG',
-                    styles: {
-                        'height': availHeight + 'px',
-                        'width': '100%',
-                        'background': '#000000',
-                        'position': 'fixed',
-                        'top': '0',
-                        'left': '0'
+                    id: 'J_migicInput',
+                    type: 'input',
+                    attr: {
+                        'type' : 'text'
                     },
-                    'callback': function () {
-                        createEle({
-                           id: 'J_migicInput',
-                           type: 'input',
-                           attr: {
-                               'type' : 'text'
-                           },
-                           styles: {
-                               'width': availWidth * 0.8 + 'px',
-                               'margin-left': '-' + availWidth * 0.4 + 'px',
-                               'left': '50%',
-                               'position': 'absolute'
-                           },
-                           parent: '#J_MIBG'
-                        });
-                    }
+                    styles: {
+                        'width': '80%',
+                        'margin-left': '-' + window.screen.availWidth * 0.4 + 'px',
+                        'left': '50%',
+                        'position': 'absolute'
+                    },
+                    parent: '#J_MIBG'
                 });
-            })
-        }, 10);
+            }
+        });
+
+
+        //// 确保键盘弹出
+        //function waitListener(callback) {
+        //    if (availHeight > window.screen.availHeight) {
+        //        clearInterval(waitTimer);
+        //        callback();
+        //    } else {
+        //        return false
+        //    }
+        //}
+        //
+        //var waitTimer = setInterval(function() {
+        //    return waitListener(function () {
+        //
+        //    })
+        //}, 10);
 
     });
 
     // 创建节点
     function createEle (nature) {
-        console.log('创建');
+
         var init = {
             id: '',
             class: '',
@@ -87,17 +91,15 @@ var mi = function (element, nature) {
             selfEle = document.querySelector('#' + init.id);
 
 
-        if (!init.attr && typeof (init.attr) == 'object') {
-
+        if (init.attr && typeof (init.attr) == 'object') {
             for ( var key in init.attr) {
                 selfEle.setAttribute(key, init.attr[key]);
             }
 
         }
-        console.log(selfEle);
 
         styles(selfEle, init.styles);
-        console.log(init.callback);
+
         init.callback();
     }
 
