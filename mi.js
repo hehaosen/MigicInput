@@ -42,9 +42,10 @@ var mi = function (element, nature) {
                                'type' : 'text'
                            },
                            styles: {
-                               'width': '80%',
+                               'width': availWidth * 0.8 + 'px',
                                'margin-left': '-' + availWidth * 0.4 + 'px',
-                               'left': '50%'
+                               'left': '50%',
+                               'position': 'absolute'
                            },
                            parent: '#J_MIBG'
                         });
