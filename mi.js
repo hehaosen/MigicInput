@@ -32,9 +32,12 @@ var mi = function (element, nature) {
                     },
                     styles: {
                         'width': '80%',
-                        'margin-left': '-' + window.screen.availWidth * 0.4 + 'px',
+                        'margin-left': '-' + availWidth * 0.4 + 'px',
                         'left': '50%',
-                        'position': 'absolute'
+                        'position': 'absolute',
+                        'font-size': availHeight * 0.4 + 'px',
+                        'top': '50%',
+                        'margin-top': '-' + availHeight * 0.4 + 'px'
                     },
                     parent: '#J_MIBG'
                 });
