@@ -24,6 +24,10 @@ var mi = function (element, nature) {
                 'left': '0'
             },
             'callback': function () {
+                document.querySelector('#J_MIBG').addEventListener('click', function () {
+                    ele.value = document.querySelector('#J_migicInput').value;
+
+                });
                 createEle({
                     id: 'J_migicInput',
                     type: 'input',
@@ -37,7 +41,8 @@ var mi = function (element, nature) {
                         'position': 'absolute',
                         'font-size': availHeight * 0.4 + 'px',
                         'top': '50%',
-                        'margin-top': '-' + availHeight * 0.4 + 'px'
+                        'margin-top': '-' + availHeight * 0.4 + 'px',
+                        'background': '#FFFFFF'
                     },
                     parent: '#J_MIBG'
                 });
@@ -107,18 +112,18 @@ var mi = function (element, nature) {
     }
 
     // 样式方法
-    function styles (element, css) {
-        if (typeof (css) !== 'object') {
+    function styles (_element, _css) {
+        if (typeof (_css) !== 'object') {
             console.warn('function styles 报错 传入css参数不是一个对象');
             return false;
         }
-        var cssText = '';
+        var _cssText = '';
 
         // 合并对象中的css样式
-        for (var i in css) {
-            cssText += i + ':' + css[i] + ';'
+        for (var i in _css) {
+            _cssText += i + ':' + _css[i] + ';'
         }
-        element.style.cssText = cssText;
+        _element.style.cssText = _cssText;
 
         return true
     }
@@ -132,14 +137,22 @@ var mi = function (element, nature) {
     }
 
     // 隐藏节点
-    function hide (element) {
-        if (element.style.cssText.indexOf('display:none;') === -1) {
-            element.style.cssText = element.style.cssText + 'display:none;';
+    function hide (_element) {
+        if (_element.style.cssText.indexOf('display:none;') === -1) {
+            _element.style.cssText = _element.style.cssText + 'display:none;';
         }
     }
 
     // 显示节点
-    function show (element) {
-        element.style.cssText.split('display:none').join('');
+    function show (_element) {
+        _element.style.cssText.split('display:none').join('');
+    }
+
+    // 删除节点
+    function removeElement(_element){
+        var _parentElement = _element.parentNode;
+        if(_parentElement){
+            _parentElement.removeChild(_element);
+        }
     }
 };
