@@ -1,3 +1,9 @@
+/*
+ * 对于输入框的扩展 v0.0.1
+ * Date: 2016-8-21
+ * author:大力神
+ * http://www.github.com/hehaosen
+ */
 var mi = function (element, nature) {
     var ele = document.querySelector(element),
         availWidth = window.screen.availWidth,
