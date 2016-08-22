@@ -50,7 +50,10 @@ var mi = function (element, nature) {
                         'margin-top': '-' + availHeight * 0.4 + 'px',
                         'background': '#FFFFFF'
                     },
-                    parent: '#J_MIBG'
+                    parent: '#J_MIBG',
+                    'callback': function () {
+                        document.querySelector('#J_migicInput').focus();
+                    }
                 });
             }
         });
