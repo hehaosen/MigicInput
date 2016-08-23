@@ -32,8 +32,9 @@ var mi = function (element, nature) {
             'callback': function () {
                 document.querySelector('#J_MIBG').addEventListener('click', function () {
                     ele.value = document.querySelector('#J_migicInput').value;
-
+                    removeElement(this);
                 });
+                
                 createEle({
                     id: 'J_migicInput',
                     type: 'input',
