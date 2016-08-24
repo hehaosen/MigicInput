@@ -34,7 +34,7 @@ var mi = function (element, nature) {
                     ele.value = document.querySelector('#J_migicInput').value;
                     removeElement(this);
                 });
-                
+
                 createEle({
                     id: 'J_migicInput',
                     type: 'input',
@@ -96,7 +96,7 @@ var mi = function (element, nature) {
 
         newEle.id = init.id;
         newEle.className = init.class;
-
+        newEle.value = ele.value;
         if (!init.parent)
             document.body.appendChild(newEle);
         else
