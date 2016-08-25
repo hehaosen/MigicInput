@@ -165,4 +165,9 @@ var mi = function (element, nature) {
             _parentElement.removeChild(_element);
         }
     }
+
+    // 展现节点内容
+    this.value = function () {
+        return ele.value;
+    }
 };
