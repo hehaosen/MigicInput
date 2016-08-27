@@ -169,5 +169,6 @@ var mi = function (element, nature) {
     // 展现节点内容
     this.value = function () {
         return ele.value;
-    }
+    };
+    // 监听换行
 };
