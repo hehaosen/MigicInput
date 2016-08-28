@@ -30,11 +30,21 @@ var mi = function (element, nature) {
                 'left': '0'
             },
             'callback': function () {
-                document.querySelector('#J_MIBG').addEventListener('click', function () {
+                var _miBgEle = document.querySelector(('#J_MIBG'));
+                _miBgEle.addEventListener('click', function () {
                     ele.value = document.querySelector('#J_migicInput').value;
                     removeElement(this);
                 });
-
+                _miBgEle.onkeydown = function (e) {
+                    var theEvent = e || window.event;
+                    var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+                    if (code == 13) {
+                        ele.value = document.querySelector('#J_migicInput').value;
+                        removeElement(this);
+                        return false;
+                    }
+                    return true
+                };
                 createEle({
                     id: 'J_migicInput',
                     type: 'input',
@@ -170,5 +180,4 @@ var mi = function (element, nature) {
     this.value = function () {
         return ele.value;
     };
-    // 监听换行
 };
