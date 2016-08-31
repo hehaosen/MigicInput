@@ -4,6 +4,7 @@
  * author:大力神
  * http://www.github.com/hehaosen
  */
+
 var mi = function (element, nature) {
     var ele = document.querySelector(element),
         availWidth = window.screen.availWidth,
@@ -12,10 +13,13 @@ var mi = function (element, nature) {
         console.warn('节点' + element + ',不是一个输入框');
         return;
     }
+    var _init = exend({
+        miSize: availHeight * 0.4 + 'px',
+
+    }, nature);
 
     // 将原先节点禁止写入
     ele.setAttribute('readonly', 'readonly');
-
 
     ele.addEventListener('click', function () {
 
@@ -56,7 +60,7 @@ var mi = function (element, nature) {
                         'margin-left': '-' + availWidth * 0.4 + 'px',
                         'left': '50%',
                         'position': 'absolute',
-                        'font-size': availHeight * 0.4 + 'px',
+                        'font-size': _init.miSize,
                         'top': '50%',
                         'margin-top': '-' + availHeight * 0.4 + 'px',
                         'background': '#FFFFFF'
