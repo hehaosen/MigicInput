@@ -15,6 +15,7 @@ var mi = function (element, nature) {
     }
     var _init = exend({
         miSize: availHeight * 0.4 + 'px',
+        bgColor: '#000000'
 
     }, nature);
 
@@ -28,7 +29,7 @@ var mi = function (element, nature) {
             styles: {
                 'height': availHeight + 'px',
                 'width': '100%',
-                'background': '#000000',
+                'background': _init.bgColor,
                 'position': 'fixed',
                 'top': '0',
                 'left': '0'
