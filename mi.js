@@ -15,8 +15,8 @@ var mi = function (element, nature) {
     }
     var _init = exend({
         miSize: availHeight * 0.4 + 'px',
-        bgColor: '#000000'
-
+        bgColor: '#000000',
+        bgOpacity: '.5'
     }, nature);
 
     // 将原先节点禁止写入
@@ -32,7 +32,8 @@ var mi = function (element, nature) {
                 'background': _init.bgColor,
                 'position': 'fixed',
                 'top': '0',
-                'left': '0'
+                'left': '0',
+                'opacity': _init.bgOpacity
             },
             'callback': function () {
                 var _miBgEle = document.querySelector(('#J_MIBG'));
